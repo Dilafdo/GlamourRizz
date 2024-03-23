@@ -30,7 +30,6 @@ function App() {
   const capture = useCallback(() => {
     const imageSrc = webcamReference.current.getScreenshot();
     setCapturedImage(imageSrc);
-    setCaptured(true);
   }, [webcamReference]);
 
   const fetchItems = async () => {
