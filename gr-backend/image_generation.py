@@ -1,9 +1,9 @@
 import replicate
 import os
 import cv2
-api = replicate.Client(api_token=os.environ["REPLICATE_API_TOKEN"])
+api = replicate.Client(api_token="r8_B5jSXTTvAatVV49eFMWSV8SZ24thq460VQckx")
 
-async def generate_image(image_path):
+def generate_image(image_path):
     # Load image
     image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     # Generate image
@@ -21,8 +21,8 @@ async def generate_image(image_path):
             "num_outputs": 1,
             "guidance_scale": 3,
             "negative_prompt": "nsfw, worst quality, greyscale, bad anatomy, bad hands, error, text",
-            "style_strength_ratio": 30
+            "style_strength_ratio": 20
         }
     )
-    output[0].download("data/out/output.png")
-    return "data/out/output.png"
+
+    return output

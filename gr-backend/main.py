@@ -35,3 +35,11 @@ def create_student(student_id: int, student: dict):
         return {"Error": "Student exists"}
     students[student_id] = student
     return students[student_id]
+
+def main():
+    images = generate_image("dalle/data/input/sydney.png")
+    print(images)
+
+
+if __name__ == "__main__":
+    main()
