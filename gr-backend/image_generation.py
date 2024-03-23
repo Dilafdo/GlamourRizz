@@ -12,7 +12,7 @@ def generate_image(image_link, prompt):
     image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     # Generate image
     resize1 = cv2.resize(image, (0, 0), fx = 0.1, fy = 0.1)
-    PREPRCOESSED_IMAGE_PATH = "dalle/data/out/temp.png"
+    PREPRCOESSED_IMAGE_PATH = "data/out/temp.png"
     cv2.imwrite(PREPRCOESSED_IMAGE_PATH, resize1)
     gray = open(PREPRCOESSED_IMAGE_PATH, "rb")
     output = api.run(

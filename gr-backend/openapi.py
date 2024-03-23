@@ -16,13 +16,13 @@ def generate_ids(data_obj, user_prompt, gender):
                                     If the prompt does not contain all the information about the top dress, bottom dress and the jewellery, suggest the missing ones. every prompt should include info about top, bottom and jewellery.\\\
                                     Additionally, extract a background information from the new prompt or if there is no background info choose something suitable and inlude it with the new prompt itself.\\\
                                     Always make sure the new prompt is a single sentence and also embed the gender information.\\\
-                                    output json string should be this format - '{matching_ids: [], matching_descriptions:[], new_prompt: string}'. return the json so that I can convert it with python json.load. Keep the new prompt as a way to use to generate an image out of it"},
+                                    output json string should be this format - '{matching_ids: [], matching_descriptions:[], new_prompt: string}'. Keep the new prompt as a way to use to generate an image out of it"},
       {"role": "user", "content": f"json text: {str(data_obj)}, prompt: {str(user_prompt)}, gender: {str(gender)}"}
     ]
   )
   
   ret_prompt = completion.choices[0].message.content
-  print(ret_prompt)
+  print("NEW prompt: ", ret_prompt)
 
   if ret_prompt:
       json_string = ret_prompt.replace("'", "\"")
@@ -41,16 +41,16 @@ def generate_ids(data_obj, user_prompt, gender):
                   if data['id'] == matched_id:
                      image_urls.append(data['img-url'])
 
-          print(f'matching ids: {matching_ids}')
-          print(f'new prompt: {new_prompt}')
-          print(f'image urls: {image_urls}')
+          # print(f'matching ids: {matching_ids}')
+          # print(f'new prompt: {new_prompt}')
+          # print(f'image urls: {image_urls}')
 
           return {"status": "OK", "new_prompt": new_prompt, "matching_ids": matching_ids, "img-urls": image_urls}
       except json.JSONDecodeError as e:
-          print(f'Error decoding JSON: {e}')
+          # print(f'Error decoding JSON: {e}')
           return {"status": "FAIL"}
   else:
-      print('Returned prompt is empty.')
+      # print('Returned prompt is empty.')
       return {"status": "FAIL"}
   
 def chatopenai(previous_prompt, options):
@@ -122,7 +122,7 @@ data_obj = {
 
 prompt = "I want to dress myself with trouser I like to see myself in a sunny beach area"
 gender = "men"
-new_obj = generate_ids(data_obj=data_obj, user_prompt=prompt, gender=gender)
+# new_obj = generate_ids(data_obj=data_obj, user_prompt=prompt, gender=gender)
 
 
 
