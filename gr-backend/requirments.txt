@@ -1,2 +1,4 @@
 fastapi
 uvicorn[standard]
+replicate==0.25.1
+motor==2.5.0
