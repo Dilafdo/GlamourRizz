@@ -22,8 +22,18 @@ def generate_ids(data_obj, user_prompt, gender):
   )
   
   ret_prompt = completion.choices[0].message.content
-  print("NEW prompt: ", ret_prompt)
+  # print("NEW prompt: ", ret_prompt)
 
+  lines = ret_prompt.split('\n')
+  # Remove the first and last lines
+  if lines[0].strip() == "```json":
+      lines.pop(0)
+  if lines[-1].strip() == "```":
+      lines.pop(-1)
+  
+  # Join the remaining lines back together
+  ret_prompt = '\n'.join(lines)
+  
   if ret_prompt:
       json_string = ret_prompt.replace("'", "\"")
 
@@ -53,28 +63,6 @@ def generate_ids(data_obj, user_prompt, gender):
       # print('Returned prompt is empty.')
       return {"status": "FAIL"}
   
-def chatopenai(previous_prompt, options):
-
-  completion = client.chat.completions.create(
-    model="gpt-4-0125-preview",
-    messages=[
-      {"role": "system", "content": "You will be provided with a json style text with different types of fashion clothing types. \\\
-                                    the text contains a type of the dress/jewellery and in each type there will be a list of different types of \\\
-                                    clothing with an id number and a description of explaining the type in details.\\\
-                                    Also you will be provided with a text containing a previous text prompt generated and a new features list. Combine the new feature list to the prompt and replace the new features. Your task is to \\\
-                                    to find matching clothing types mention in the text prompt + new features list from the json text object and return the ids of\\\
-                                    those that matches and the description and a new prompt that more suitable with all the information of the matches in a json style.\\\
-                                    Additionally, extract a background information from the new prompt or if there is no background info choose something suitable and inlude it with the new prompt itself.\\\
-                                    Always make sure the new prompt is a single sentence and also embed the gender information.\\\
-                                    output json string should be this format - '{matching_ids: [], matching_descriptions:[], new_prompt: string}' . Keep the new prompt as a way to use to generate an image out of it"},
-      {"role": "user", "content": f"json text: {str(data_obj)}, previous_prompt: {str(previous_prompt)}, options: {str(options)}"}
-    ]
-  )
-  
-  ret_prompt = completion.choices[0].message.content
-  print(ret_prompt)
-
-  return 0
 
 data_obj = {
   "top": [{
@@ -124,12 +112,4 @@ prompt = "I want to dress myself with trouser I like to see myself in a sunny be
 gender = "men"
 # new_obj = generate_ids(data_obj=data_obj, user_prompt=prompt, gender=gender)
 
-
-
-# old_prompt = new_obj["new_prompt"]
-
-# chatopenai(old_prompt, ["red dress", "gold jewellery"])
-
-
-
-
+# print(new_obj)
