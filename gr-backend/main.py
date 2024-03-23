@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Path
 from typing import Optional
+from image_generation import generate_image
 
 app = FastAPI()
 
@@ -11,9 +12,10 @@ students = {
     }
 }
 
-@app.get("/")
+@app.get("/generate-image")
 def index():
-    return {"name": "First name"}
+    image_path = generate_image("dalle/data/input/sydney.png", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
+    return {"name": image_path}
 
 @app.get("/students/{student_id}")
 def get_student(student_id: int = Path(description="Id of the student", gt=0, lt=3)):
@@ -33,3 +35,10 @@ def create_student(student_id: int, student: dict):
         return {"Error": "Student exists"}
     students[student_id] = student
     return students[student_id]
+
+def main():
+    images = generate_image("dalle/data/input/sydney.png", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
+    print(images)
+
+if __name__ == "__main__":
+    main()
