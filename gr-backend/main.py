@@ -14,7 +14,7 @@ students = {
 
 @app.get("/generate-image")
 def index():
-    image_path = generate_image("dalle/data/input/sydney.png")
+    image_path = generate_image("dalle/data/input/sydney.png", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
     return {"name": image_path}
 
 @app.get("/students/{student_id}")
@@ -37,9 +37,8 @@ def create_student(student_id: int, student: dict):
     return students[student_id]
 
 def main():
-    images = generate_image("dalle/data/input/sydney.png")
+    images = generate_image("dalle/data/input/sydney.png", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
     print(images)
-
 
 if __name__ == "__main__":
     main()
