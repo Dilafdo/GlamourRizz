@@ -11,6 +11,12 @@ def get_items(db: Session, skip: int = 0, limit: int = 100):
 def get_suggestions(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Suggestion).offset(skip).limit(limit).all()
 
+def get_user_suggestion(db: Session, suggestion_id: int, user_id: int):
+    return db.query(models.Suggestion).filter(models.Suggestion.id == suggestion_id, models.Suggestion.owner_id == user_id).first()
+
+def get_user_suggestions(db: Session, user_id: int, limit: int = 100):
+    return db.query(models.Suggestion).filter(models.Suggestion.owner_id == user_id).limit(limit).all()
+
 def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
     db_item = models.Item(**item.dict(), owner_id=user_id)
     db.add(db_item)

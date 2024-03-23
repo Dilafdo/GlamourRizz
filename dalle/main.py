@@ -1,5 +1,6 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
+import requests
 
 import crud, models, schemas
 from database import SessionLocal, engine
@@ -41,6 +42,23 @@ def create_suggestion_for_user(
     user_id: int, suggestion: schemas.SuggestionCreate, db: Session = Depends(get_db)
 ):
     return crud.create_user_suggestion(db=db, suggestion=suggestion, user_id=user_id)
+
+@app.post("/users/{user_id}/suggestions/{suggestion_id}", response_model=schemas.Suggestion)
+def create_suggestion_for_user(
+    user_id: int, suggestion: schemas.SuggestionCreate, db: Session = Depends(get_db)
+):
+    return crud.create_user_suggestion(db=db, suggestion=suggestion, user_id=user_id)
+
+@app.get("/users/{user_id}/suggestions/{suggestion_id}", response_model=schemas.Suggestion)
+def read_suggestion(user_id: int, suggestion_id: int, db: Session = Depends(get_db)):
+    suggestions = crud.get_user_suggestion(db, suggestion_id=suggestion_id, user_id=user_id)
+    return suggestions
+
+@app.get("/users/{user_id}/suggestions", response_model=list[schemas.Suggestion])
+def read_suggestion(user_id: int, limit: int = 100, db: Session = Depends(get_db)):
+    suggestions = crud.get_user_suggestions(db, user_id=user_id, limit=limit)
+    return suggestions
+
 
 @app.get("/users/{user_id}", response_model=schemas.User)
 def read_user(user_id: int, db: Session = Depends(get_db)):
