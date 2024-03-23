@@ -4,11 +4,12 @@ import { IoColorFilter } from "react-icons/io5";
 import { ImBrightnessContrast } from "react-icons/im";
 import { TbContrastOff } from "react-icons/tb";
 import { IoPersonAddSharp } from "react-icons/io5";
-import { RiDeleteBin5Fill} from "react-icons/ri";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BsCameraVideoFill } from "react-icons/bs";
 import { GiNextButton } from "react-icons/gi";
 import { GiPreviousButton } from "react-icons/gi";
 import Webcam from "react-webcam";
+import Header from "./Header";
 
 function App() {
   const [capturedImage, setCapturedImage] = useState(null);
@@ -25,9 +26,7 @@ function App() {
   return (
     <div className="app_container">
       <div className="app_wrapper">
-        <h1 className="app_header">
-          GlamourRizz
-        </h1>
+        <Header/>
 
         <div className="app_image_option_wrapper">
           <div className="app_left_icons">
