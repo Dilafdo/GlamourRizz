@@ -2,6 +2,7 @@ from fastapi import FastAPI, Path
 from typing import Optional
 from image_generation import generate_image
 from prompt import prompt
+import uvicorn
 # import asyncio
 
 
@@ -25,5 +26,8 @@ def main():
     images = generate_image("dalle/data/input/sydney.png", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
     print(images)
 
+# if __name__ == "__main__":
+#     main()
+
 if __name__ == "__main__":
-    main()
+ uvicorn.run("main:app", host="0.0.0.0", port=8000)
