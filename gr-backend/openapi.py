@@ -22,7 +22,7 @@ def generate_ids(data_obj, user_prompt, gender):
   )
   
   ret_prompt = completion.choices[0].message.content
-  print(ret_prompt)
+  print("NEW prompt: ", ret_prompt)
 
   if ret_prompt:
       json_string = ret_prompt.replace("'", "\"")

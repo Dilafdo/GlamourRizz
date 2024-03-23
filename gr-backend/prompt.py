@@ -19,11 +19,14 @@ def prompt(user_id, prompt, gender):
 
     # Find the matching ids
     result = generate_ids(data_obj, prompt, gender)
+    print("======================== ", result["status"])
     while result["status"] == "FAIL":
         result = generate_ids(data_obj, prompt, gender)
+        print("======================== ", result["status"])
     # print(user_id)
     # print(result)
-    generate_image(image_path, result["new_prompt"])
+    image_path = generate_image("https://glamourizz.s3.eu-north-1.amazonaws.com/charactor/musk.webp", "This is Elon Musk. " + result["new_prompt"])
+    return {"name": image_path}
 
-    return result
+    # return result
 
