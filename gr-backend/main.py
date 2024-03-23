@@ -1,16 +1,9 @@
 from fastapi import FastAPI, Path
-from typing import Optional
 from image_generation import generate_image
-from prompt import prompt
-# import asyncio
-
+from prompt import call_prompt
+from get_image import get_image_from_userId
 
 app = FastAPI()
-
-# @app.get("/generate-image")
-# def index():
-#     image_path = generate_image("https://glamourizz.s3.eu-north-1.amazonaws.com/trouser/denim-men-llight.webp", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
-#     return {"name": image_path}
 
 @app.get("/hello")
 def hello():
@@ -18,8 +11,13 @@ def hello():
 
 @app.post("/post-prompt")
 def post_prompt(data: dict):
-    prompt(data["user_id"], data["prompt"], data["gender"], data["image_url"])
+    # loop = asyncio.get_event_loop()
+    call_prompt(data["user_id"], data["prompt"], data["gender"], data["image_url"])
     return {"status": "OK"}
+
+@app.get("/get-url/{user_id}/{image_id}")
+def get_url(user_id: int = Path(..., title="The ID of the user"), image_id: int = Path(..., title="The ID of the image")):
+    return get_image_from_userId(user_id, image_id)
 
 def main():
     images = generate_image("dalle/data/input/sydney.png", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
