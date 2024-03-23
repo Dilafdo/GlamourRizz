@@ -2,7 +2,7 @@ from openapi import generate_ids
 from image_generation import generate_image
 import json
 import os
-def prompt(user_id, prompt, gender, image_url):
+def call_prompt(user_id, prompt, gender, image_url):
     with open("bottom.json", "r") as file:
         bottom_data = json.load(file)
 

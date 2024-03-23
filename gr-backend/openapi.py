@@ -22,7 +22,7 @@ def generate_ids(data_obj, user_prompt, gender):
   )
   
   ret_prompt = completion.choices[0].message.content
-  # print("NEW prompt: ", ret_prompt)
+  print("NEW prompt: ", ret_prompt)
 
   lines = ret_prompt.split('\n')
   # Remove the first and last lines
