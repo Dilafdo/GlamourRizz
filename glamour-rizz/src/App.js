@@ -13,6 +13,7 @@ import Webcam from "react-webcam";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import AWS from "aws-sdk";
+import Header from "./Header";
 
 function App() {
   const [capturedImage, setCapturedImage] = useState(null);
@@ -97,9 +98,7 @@ function App() {
   return (
     <div className="app_container">
       <div className="app_wrapper">
-        <header className="app_header">
-          TEXTILE OPTIONS GENERATING SOFTWARE
-        </header>
+        <Header/>
 
         <div className="app_image_option_wrapper">
           <div className="app_left_icons">

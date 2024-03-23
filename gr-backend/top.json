@@ -1,0 +1,22 @@
+[
+    {
+        "id": 21,
+        "description": "frock, short dress, only upto knees, red, for women",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/frock/red+short.webp"
+    },
+    {
+        "id": 22,
+        "description": "frock, long dress, only upto knees, blue, for women",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/frock/blue+long.webp"
+    },
+    {
+        "id": 23,
+        "description": "shirt, long sleeve, checks, blue, for men",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/blue+long.webp"
+    },
+    {
+        "id": 24,
+        "description": "shirt, short sleeve, vertical lines, red, for men",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/red+short.webp"
+    }
+]

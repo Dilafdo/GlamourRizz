@@ -1,45 +1,43 @@
 from fastapi import FastAPI, Path
-from typing import Optional
 from image_generation import generate_image
+import uvicorn
+# import asyncio
+
+from prompt import call_prompt
+from get_image import get_image_from_userId
+
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# students = {
-#     1: {
-#         "name": "John",
-#         "age": 14,
-#         "class": "year 12"
-#     }
-# }
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.get("/generate-image")
-def index():
-    return {"App is working!!"}
-    image_path = generate_image("dalle/data/input/sydney.png", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
-    return {"name": image_path}
+@app.get("/hello")
+def hello():
+    return {"name": "hello world"}
 
-@app.post("post-prompt")
-def post_prompt(user_id: int, prompt: str, gendre: str):
-    return students[student_id]
+@app.post("/post-prompt")
+def post_prompt(data: dict):
+    # loop = asyncio.get_event_loop()
+    call_prompt(data["user_id"], data["prompt"], data["gender"], data["image_url"])
+    return {"status": "OK"}
 
-# @app.get("/students-by-name")
-# def get_student_by_name(name: Optional[str] =  None):
-#     for student_id in students:
-#         if students[student_id]["name"] == name:
-#             return students[student_id]
-#     return {"data": "not found"}
-#
-# ## create student endpoint
-# @app.post("/create-student/{student_id}")
-# def create_student(student_id: int, student: dict):
-#     if student_id in students:
-#         return {"Error": "Student exists"}
-#     students[student_id] = student
-#     return students[student_id]
+@app.get("/get-url/{user_id}/{image_id}")
+def get_url(user_id: int = Path(..., title="The ID of the user"), image_id: int = Path(..., title="The ID of the image")):
+    return get_image_from_userId(user_id, image_id)
 
 def main():
     images = generate_image("dalle/data/input/sydney.png", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
     print(images)
 
+# if __name__ == "__main__":
+#     main()
+
 if __name__ == "__main__":
-    main()
+ uvicorn.run("main:app", host="0.0.0.0", port=8000)

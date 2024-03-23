@@ -1,0 +1,12 @@
+[
+    {
+        "id": 11,
+        "description": "trouser, for men, light-blue, denim, 100% cotton, slim fit",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/trouser/denim-men-llight.webp"
+    },
+    {
+        "id": 12,
+        "description": "trouser, for men, black, 100% cotton, regular fit",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/trouser/black+trouser.webp"
+    }
+]
