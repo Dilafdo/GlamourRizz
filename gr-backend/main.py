@@ -3,7 +3,17 @@ from image_generation import generate_image
 from prompt import call_prompt
 from get_image import get_image_from_userId
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/hello")
 def hello():
