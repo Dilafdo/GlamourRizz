@@ -33,3 +33,21 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+
+
+class SuggestionBase(BaseModel):
+    type: str
+    background: str
+    mood: str
+    gender: str
+
+
+class SuggestionCreate(SuggestionBase):
+    pass
+
+class Suggestion(SuggestionBase):
+    id: int
+    owner_id: int
+
+    class Config:
+        orm_mode = True

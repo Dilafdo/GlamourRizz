@@ -31,6 +31,16 @@ def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = crud.get_users(db, skip=skip, limit=limit)
     return users
 
+@app.get("/suggestions/", response_model=list[schemas.Suggestion])
+def read_suggestion(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    suggestions = crud.get_suggestions(db, skip=skip, limit=limit)
+    return suggestions
+
+@app.post("/users/{user_id}/suggestions/", response_model=schemas.Suggestion)
+def create_suggestion_for_user(
+    user_id: int, suggestion: schemas.SuggestionCreate, db: Session = Depends(get_db)
+):
+    return crud.create_user_suggestion(db=db, suggestion=suggestion, user_id=user_id)
 
 @app.get("/users/{user_id}", response_model=schemas.User)
 def read_user(user_id: int, db: Session = Depends(get_db)):
