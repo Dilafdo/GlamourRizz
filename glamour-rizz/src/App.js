@@ -36,7 +36,7 @@ function App() {
     console.log("image returned");
     try {
       const response = await axios.get(
-        `http://16.16.173.163:8000/get-url/${uuid}/1`
+        `https://16.16.173.163:8000/get-url/${uuid}/1`
       );
       setSelectedImages(response.data);
     } catch (error) {
@@ -72,7 +72,7 @@ function App() {
     console.log("INPUT DATA", inputData);
     try {
       const response = await axios.post(
-        "http://16.16.173.163:8000/post-prompt",
+        "https://16.16.173.163:8000/post-prompt",
 
         inputData,
 
