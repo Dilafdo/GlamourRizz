@@ -16,7 +16,7 @@ def generate_ids(data_obj, user_prompt, gender):
                                     If the prompt does not contain all the information about the top dress, bottom dress and the jewellery, suggest the missing ones. every prompt should include info about top, bottom and jewellery.\\\
                                     Additionally, extract a background information from the new prompt or if there is no background info choose something suitable and inlude it with the new prompt itself.\\\
                                     Always make sure the new prompt is a single sentence and also embed the gender information.\\\
-                                    output json string should be this format - '{matching_ids: [], matching_descriptions:[], new_prompt: string}'. Keep the new prompt as a way to use to generate an image out of it"},
+                                    output json string should be this format - '{matching_ids: [], matching_descriptions:[], new_prompt: string}'. return the json so that I can convert it with python json.load. Keep the new prompt as a way to use to generate an image out of it"},
       {"role": "user", "content": f"json text: {str(data_obj)}, prompt: {str(user_prompt)}, gender: {str(gender)}"}
     ]
   )
@@ -34,10 +34,18 @@ def generate_ids(data_obj, user_prompt, gender):
           matching_ids = json_object.get('matching_ids', [])
           new_prompt = "img - " + json_object.get('new_prompt', '')
 
+          image_urls = []
+          for matched_id in matching_ids:
+            for key in data_obj.keys():
+              for data in data_obj[key]:
+                  if data['id'] == matched_id:
+                     image_urls.append(data['img-url'])
+
           print(f'matching ids: {matching_ids}')
           print(f'new prompt: {new_prompt}')
+          print(f'image urls: {image_urls}')
 
-          return {"status": "OK", "new_prompt": new_prompt, "matching_ids": matching_ids}
+          return {"status": "OK", "new_prompt": new_prompt, "matching_ids": matching_ids, "img-urls": image_urls}
       except json.JSONDecodeError as e:
           print(f'Error decoding JSON: {e}')
           return {"status": "FAIL"}
@@ -95,7 +103,7 @@ data_obj = {
     "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/trouser/denim-men-llight.webp"
   },
   {
-    "_id": "65fed03cee93fb64358fd903",
+    "id": "65fed03cee93fb64358fd903",
     "description": "trouser, for men, black, 100% cotton, regular fit",
     "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/trouser/black+trouser.webp"
   }],
@@ -112,15 +120,15 @@ data_obj = {
   
 }
 
-prompt = "I want to dress myself with white trouser I like to see myself in a sunny beach area"
+prompt = "I want to dress myself with trouser I like to see myself in a sunny beach area"
 gender = "men"
 new_obj = generate_ids(data_obj=data_obj, user_prompt=prompt, gender=gender)
 
 
 
-old_prompt = new_obj["new_prompt"]
+# old_prompt = new_obj["new_prompt"]
 
-chatopenai(old_prompt, ["red dress", "gold jewellery"])
+# chatopenai(old_prompt, ["red dress", "gold jewellery"])
 
 
 
