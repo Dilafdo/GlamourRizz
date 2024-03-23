@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "image_url_1": "https://s3.amazonaws.com/fevo-fuc/assets-demo/images/1.jpg",
+        "image_url_2": "https://s3.amazonaws.com/fevo-fuc/assets-demo/images/2.jpg"
+    },
+    {
+        "id": 1,
+        "image_url_1": "https://replicate.delivery/pbxt/qA2Zgx8FkkaUMhdUQudwLmoM5cFHpRJXa4RIqYLVB2B0XzoE/image_0.png",
+        "image_url_2": "https://replicate.delivery/pbxt/inBSQVpIR2oDIpjE2WkEzD8um3XyxgmPUV8u0RoLLPW0XzoE/image_1.png"
+    },
+    {
+        "id": 1,
+        "image_url_1": "https://replicate.delivery/pbxt/YieVJVDfXuqYSUH2pPIfAn36fYfebv0f5tlBef9lE6tVeS2MKB/image_0.png",
+        "image_url_2": "https://replicate.delivery/pbxt/kHMtFawaEp59N1FQwIsYnAIwDGKgcZyXS9BesTTMX6hXymRJA/image_1.png"
+    },
+    {
+        "id": 1,
+        "image_url_1": "https://replicate.delivery/pbxt/K1TVByXG8p6zCNSsw5QXMfImOFMQJLfqCJkTZHcgK1bG0NjSA/image_0.png",
+        "image_url_2": "https://replicate.delivery/pbxt/KARHbPRJpfTDQ6ZjYCSyCRfv7RKqQPmZHxI4xc3vFfNMobGlA/image_1.png"
+    }
+]

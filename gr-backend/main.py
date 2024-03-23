@@ -2,6 +2,7 @@ from fastapi import FastAPI, Path
 from typing import Optional
 from image_generation import generate_image
 from prompt import prompt
+# import asyncio
 
 
 app = FastAPI()
@@ -11,13 +12,14 @@ app = FastAPI()
 #     image_path = generate_image("https://glamourizz.s3.eu-north-1.amazonaws.com/trouser/denim-men-llight.webp", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
 #     return {"name": image_path}
 
-# @app.get("/hello")
-# def hello():
-#     return {"name": "hello world"}
+@app.get("/hello")
+def hello():
+    return {"name": "hello world"}
 
 @app.post("/post-prompt")
 def post_prompt(data: dict):
-    return prompt(data["user_id"], data["prompt"], data["gender"])
+    prompt(data["user_id"], data["prompt"], data["gender"], data["image_url"])
+    return {"status": "OK"}
 
 def main():
     images = generate_image("dalle/data/input/sydney.png", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")
