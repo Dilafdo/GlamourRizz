@@ -17,7 +17,8 @@ app = FastAPI()
 
 @app.post("/post-prompt")
 def post_prompt(data: dict):
-    return prompt(data["user_id"], data["prompt"], data["gender"])
+    prompt(data["user_id"], data["prompt"], data["gender"], data["image_url"])
+    return {"Status": "OK"}
 
 def main():
     images = generate_image("dalle/data/input/sydney.png", prompt = "A girl img wearing a blue dress, CGI, realistic, fhalfull-body, screenshot from party")

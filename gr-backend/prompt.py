@@ -1,7 +1,8 @@
 from openapi import generate_ids
 from image_generation import generate_image
 import json
-def prompt(user_id, prompt, gender):
+import os
+def prompt(user_id, prompt, gender, image_url):
     with open("bottom.json", "r") as file:
         bottom_data = json.load(file)
 
@@ -25,7 +26,13 @@ def prompt(user_id, prompt, gender):
         print("======================== ", result["status"])
     # print(user_id)
     # print(result)
-    image_path = generate_image("https://glamourizz.s3.eu-north-1.amazonaws.com/charactor/musk.webp", "This is Elon Musk. " + result["new_prompt"])
+    filename = image_url.split("/")[-1]
+
+    # Remove the file extension
+    name = os.path.splitext(filename)[0]
+
+    prompt_str = f"This is , {name}. {result['new_prompt']}"
+    image_path = generate_image(image_url, prompt_str)
     return {"name": image_path}
 
     # return result
