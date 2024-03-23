@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Path
 from image_generation import generate_image
-from prompt import prompt
 import uvicorn
 # import asyncio
 
