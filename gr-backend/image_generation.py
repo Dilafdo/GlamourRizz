@@ -1,10 +1,14 @@
 import replicate
 import os
 import cv2
+import urllib.request
 api = replicate.Client(api_token="r8_B5jSXTTvAatVV49eFMWSV8SZ24thq460VQckx")
 
-def generate_image(image_path, prompt):
+def generate_image(image_link, prompt):
     # Load image
+    # Download image
+    urllib.request.urlretrieve(image_link, "image.jpg")
+    image_path = "image.jpg"
     image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     # Generate image
     resize1 = cv2.resize(image, (0, 0), fx = 0.1, fy = 0.1)
