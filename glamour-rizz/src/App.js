@@ -37,7 +37,7 @@ function App() {
     console.log("image returned");
     try {
       const response = await axios.get(
-        `http://ec2-13-49-175-77.eu-north-1.compute.amazonaws.com:8000/get-url/${uuid}`
+        `https://ec2-13-49-175-77.eu-north-1.compute.amazonaws.com:8000/get-url/${uuid}`
       );
       setSelectedImages(response.data);
     } catch (error) {
@@ -73,7 +73,7 @@ function App() {
     console.log("INPUT DATA", inputData);
     try {
       const response = await axios.post(
-        "http://ec2-13-49-175-77.eu-north-1.compute.amazonaws.com:8000/post-prompt",
+        "https://ec2-13-49-175-77.eu-north-1.compute.amazonaws.com:8000/post-prompt",
 
         inputData,
 
