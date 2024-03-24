@@ -8,6 +8,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BsCameraVideoFill } from "react-icons/bs";
 import { GiNextButton } from "react-icons/gi";
 import { GiPreviousButton } from "react-icons/gi";
+import { IoCameraOutline } from "react-icons/io5";
 import { IoSend } from "react-icons/io5";
 import Webcam from "react-webcam";
 import { v4 as uuidv4 } from "uuid";
@@ -40,7 +41,7 @@ function App() {
     console.log("image returned");
     try {
       const response = await axios.get(
-        `http://16.16.173.163:8000/get-url/${uuid}/1`
+        `http://ec2-13-49-175-77.eu-north-1.compute.amazonaws.com:8000/get-url/${uuid}`
       );
       setSelectedImages(response.data);
     } catch (error) {
@@ -76,7 +77,7 @@ function App() {
     console.log("INPUT DATA", inputData);
     try {
       const response = await axios.post(
-        "http://16.16.173.163:8000/post-prompt",
+        "http://ec2-13-49-175-77.eu-north-1.compute.amazonaws.com:8000/post-prompt",
 
         inputData,
 
@@ -98,21 +99,22 @@ function App() {
   return (
     <div className="app_container">
       <div className="app_wrapper">
-        <Header/>
+        <Header />
 
         <div className="app_image_option_wrapper">
           <div className="app_left_icons">
             <div className="app_icon app_left_icon_1">
-              <IoColorFilter size={30} />
+              {/* <IoColorFilter size={30} /> */}
             </div>
             <div className="app_icon app_left_icon_1">
-              <ImBrightnessContrast size={30} />
+              {/* <ImBrightnessContrast size={30} /> */}
             </div>
             <div
               className="app_icon app_left_icon_1"
               onClick={() => capturedImage && sendDataToBackend()}
             >
               <IoSend size={30} />
+              <p className="send_person">send</p>
             </div>
           </div>
           <div className="app_image">
@@ -122,7 +124,7 @@ function App() {
                   {selectedImage && (
                     <div className="taken_picture">
                       <img
-                        src={selectedImage.image_url}
+                        src={selectedImage.image_url[0]}
                         alt="Selected"
                         style={{ maxWidth: "100%" }}
                       />
@@ -194,20 +196,21 @@ function App() {
           </div> */}
           <div className="app_right_icons">
             <div className="app_icon app_right_icon_1">
-              <IoPersonAddSharp size={30} />
+              {/* <IoPersonAddSharp size={30} /> */}
             </div>
             <div className="app_icon app_right_icon_1">
-              <RiDeleteBin5Fill size={30} />
+              {/* <RiDeleteBin5Fill size={30} /> */}
             </div>
             <div className="app_icon app_right_icon_1" onClick={capture}>
-              <BsCameraVideoFill size={30} />
+              <IoCameraOutline size={30} />
+              <p className="capture_person">capture</p>
             </div>
           </div>
         </div>
         <div className="app_inputChat">
           <textarea
             onChange={handleText}
-            placeholder="How may we match your request?"
+            placeholder="I need a blue shirt"
             name=""
             id=""
             cols="30"
