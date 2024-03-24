@@ -206,7 +206,7 @@ function App() {
         <div className="app_inputChat">
           <textarea
             onChange={handleText}
-            placeholder="I need a blue shirt"
+            placeholder="I am a 20 year old female looking for a medium size blue shirt"
             name=""
             id=""
             cols="30"
