@@ -1,10 +1,5 @@
 import React, { useRef, useCallback, useState } from "react";
 import "./App.css";
-import { IoColorFilter } from "react-icons/io5";
-import { ImBrightnessContrast } from "react-icons/im";
-import { IoPersonAddSharp } from "react-icons/io5";
-import { RiDeleteBin5Fill } from "react-icons/ri";
-import { BsCameraVideoFill } from "react-icons/bs";
 import { GiNextButton } from "react-icons/gi";
 import { GiPreviousButton } from "react-icons/gi";
 import { IoCameraOutline } from "react-icons/io5";
