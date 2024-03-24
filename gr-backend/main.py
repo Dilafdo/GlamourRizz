@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Path
 from image_generation import generate_image
 import uvicorn
-# import asyncio
 
 from prompt import call_prompt
 from get_image import get_image_from_userId
@@ -27,10 +26,6 @@ def post_prompt(data: dict):
     # loop = asyncio.get_event_loop()
     call_prompt(data["user_id"], data["prompt"], data["gender"], data["image_url"])
     return {"status": "OK"}
-
-# @app.get("/get-url/{user_id}/{image_id}")
-# def get_url(user_id: int = Path(..., title="The ID of the user"), image_id: int = Path(..., title="The ID of the image")):
-#     return get_image_from_userId(user_id, image_id)
 
 @app.get("/get-url/{user_id}")
 def get_url(user_id: int = Path(..., title="The ID of the user")):

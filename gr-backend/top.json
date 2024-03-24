@@ -18,5 +18,60 @@
         "id": 24,
         "description": "shirt, short sleeve, vertical lines, red, for men",
         "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/red+short.webp"
+    },
+    {
+        "id": 25,
+        "description": "frock, short dress, only upto knees, green, for women, for party",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/frock/red+short.webp"
+    },
+    {
+        "id": 26,
+        "description": "frock, long dress, black, for women",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/frock/blue+long.webp"
+    },
+    {
+        "id": 27,
+        "description": "t-shirt, good for summer, plain color, black, for men",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/blue+long.webp"
+    },
+    {
+        "id": 28,
+        "description": "t-shirt, short sleeve, casual, best for all the occasions, creamy colors, for men",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/red+short.webp"
+    },
+    {
+        "id": 29,
+        "description": "t-shirt, long sleeve, casual, best for all the occasions, purple, for men",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/red+short.webp"
+    },
+    {
+        "id": 30,
+        "description": "full suit, black, for men, for party, for wedding",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/red+short.webp"
+    },
+    {
+        "id": 31,
+        "description": "full suit, dark blue, for men, official",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/red+short.webp"
+    },
+    {
+        "id": 32,
+        "description": "full suit, black, for women, for party, official",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/red+short.webp"
+    },
+    {
+        "id": 33,
+        "description": "blazer, black, for men",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/red+short.webp"
+    },
+    {
+        "id": 34,
+        "description": "women blouse, red, for women, casual",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/red+short.webp"
+    },
+    {
+        "id": 35,
+        "description": "women blouse, black, for women, casual",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/shirt/red+short.webp"
     }
 ]

@@ -8,5 +8,20 @@
         "id": 12,
         "description": "trouser, for men, black, 100% cotton, regular fit",
         "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/trouser/black+trouser.webp"
+    },
+    {
+        "id": 13,
+        "description": "skirt, for women, black, 100% cotton, plain color",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/trouser/black+trouser.webp"
+    },
+    {
+        "id": 14,
+        "description": "trouser, for men, three quarter, black, 100% cotton",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/trouser/black+trouser.webp"
+    },
+    {
+        "id": 15,
+        "description": "trouser, for men, brown, 100% cotton, regular fit, up to knee",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/trouser/black+trouser.webp"
     }
 ]
