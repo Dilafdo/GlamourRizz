@@ -36,7 +36,7 @@ function App() {
     console.log("image returned");
     try {
       const response = await axios.get(
-        `https://16.16.173.163:8000/get-url/${uuid}/1`
+        `https://16.16.173.163:8000/get-url/${uuid}`
       );
       setSelectedImages(response.data);
     } catch (error) {
