@@ -1,8 +1,7 @@
-import React, { useRef, useCallback, useState, useEffect } from "react";
+import React, { useRef, useCallback, useState } from "react";
 import "./App.css";
 import { IoColorFilter } from "react-icons/io5";
 import { ImBrightnessContrast } from "react-icons/im";
-import { TbContrastOff } from "react-icons/tb";
 import { IoPersonAddSharp } from "react-icons/io5";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BsCameraVideoFill } from "react-icons/bs";
@@ -13,12 +12,10 @@ import { IoSend } from "react-icons/io5";
 import Webcam from "react-webcam";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
-import AWS from "aws-sdk";
 import Header from "./Header";
 
 function App() {
   const [capturedImage, setCapturedImage] = useState(null);
-  const [captured, setCaptured] = useState(false);
   const [selectedImage, setSelectedImages] = useState(null);
   const [textInput, setTextInput] = useState("");
   console.log(capturedImage);
@@ -34,7 +31,6 @@ function App() {
   const capture = useCallback(() => {
     const imageSrc = webcamReference.current.getScreenshot();
     setCapturedImage(imageSrc);
-    setCaptured(true);
   }, [webcamReference]);
 
   const fetchItems = async () => {
