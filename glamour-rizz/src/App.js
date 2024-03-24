@@ -12,7 +12,7 @@ import Header from "./Header";
 function App() {
   const [capturedImage, setCapturedImage] = useState(null);
   const [selectedImage, setSelectedImages] = useState(null);
-  const [textInput, setTextInput] = useState("");
+  const [textInput, setTextInput] = useState("I am a 20 year old female looking for a medium size blue shirt");
   console.log(capturedImage);
   console.log("SELECTED IMAGE====>>>>>", selectedImage);
   const uuid = uuidv4();
