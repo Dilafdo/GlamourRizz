@@ -1,7 +1,27 @@
 [
     {
         "id": 31,
-        "description": "gold, for women, with diamonds",
+        "description": "necklace, gold, for women, with diamonds",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/jewellery/gold+with+diamond.jpeg"
+    },
+    {
+        "id": 32,
+        "description": "necklace, silver, for men, with a pendent with a cross",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/jewellery/gold+with+diamond.jpeg"
+    },
+    {
+        "id": 33,
+        "description": "necklace, silver, for men, with a pendent with a cross",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/jewellery/gold+with+diamond.jpeg"
+    },
+    {
+        "id": 34,
+        "description": "ring, silver, for men, with a black stone",
+        "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/jewellery/gold+with+diamond.jpeg"
+    },
+    {
+        "id": 35,
+        "description": "gold, bracelet, for men",
         "img-url": "https://glamourizz.s3.eu-north-1.amazonaws.com/jewellery/gold+with+diamond.jpeg"
     }
 ]
